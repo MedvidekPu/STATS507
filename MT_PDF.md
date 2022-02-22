@@ -154,9 +154,8 @@ class Fibo:
         return fibo
 ```
 
-```
 ### Ulam numbers
-
+```
 def ulam():
     t = [1,2]
     u = 3
@@ -172,9 +171,81 @@ def ulam():
 ```
  
  
- ### Sum of first 10 even square numbers
- ```
- sum_of_even_squares = functools.reduce(lambda x,y: x+y, filter(lambda x: x%2 == 0, [x*x for x in range(1,21)]))
- ```
+### Sum of first 10 even square numbers
+```
+sum_of_even_squares = functools.reduce(lambda x,y: x+y, filter(lambda x: x%2 == 0, [x*x for x in range(1,21)]))
+```
  
+```
+ product_of_primes = functools.reduce(lambda x,y: x*y, [next(p) for i in range(13)])
+ # p = primes() generator object
+```
+
+### 20 harmonic numbers
+```
+harmonics = [functools.reduce(lambda x,y: x+1/y, range(i)) for i in range(2,22)]
+```
+
+``` 
+### Geometric mean of the first tetrahedral numbers
+tetra = (n*(n+1)*(n+2)/6 for n in positive())
+tetra_geom = [functools.reduce(lambda x,y: x*y, [next(tetra) for x in range(12)])][0]**(1/12)
+``` 
+
+### Make polynomials
+
+```
+def make_poly(coeffs):
+    s = 0
+    return lambda x: sum(i * (x ** k) for k,i in enumerate(coeffs))
+    
+make_poly([1,2,2,3])(2)
+# 37
+```    
  
+### Eval polynomials
+
+``` 
+coeffs = [1,2,2,3]
+args = [1,2,3]
+eval_poly(coeffs, args)
+# [8, 37, 106]
+
+def eval_poly(coeffs, args):
+    return [make_poly(coeffs)(i) for i in args]
+``` 
+
+### Wigner density
+
+``` 
+def wigner_density(x):
+    if x >= 2 or x <= 2:
+        return np.sqrt(4-x**2)/(2*np.pi)
+    else:
+        return 0
+``` 
+
+### Wigner matrix
+``` 
+def generate_wigner(n):
+    if type(n) != int:
+        raise TypeError
+    if n <= 0:
+        raise ValueError
+    else:
+        x = np.random.normal(0, np.sqrt(1/n), (n,n))
+        lower = np.tril(x, k = -1)
+        diag = np.diag(np.diagonal(x))
+        upper = np.transpose(lower)
+        wigner = lower + diag + upper
+        wigner = np.matrix(wigner)
+        return wigner
+``` 
+
+### Eigenvalues
+
+``` 
+def get_spectrum(m):
+    eigenvalue, eigenvector = np.linalg.eigh(m)
+    return eigenvalue
+```
