@@ -319,6 +319,14 @@ for i in key:
 #('six', 'hundred'): 1}
 
 ``` 
+### Ruler sequence using itertools
+
+``` 
+from itertools import repeat,count
+
+i   = count(1,1)
+rul = (n for r in count(1,1) for _ in range(r) for n in repeat(next(i),r))
+``` 
 
 ## Notes
 
@@ -337,3 +345,18 @@ t1 is (1, 2, 3, 4)
 t2 is (5,)
 (1, 2, 3, 4, 5)
 ``` 
+
+### Itertools vs. Vanilla Python
+
+```
+iterator = (x**2 for x in range(20))
+list(itertools.islice(iterator, 2, 10))
+# [4, 9, 16, 25, 36, 49, 64, 81]
+```
+
+```
+iterator = (x**2 for x in range(20))
+[x for i, x in enumerate(iterator) if i>=2 and i<10]
+# [4, 9, 16, 25, 36, 49, 64, 81]
+```
+
