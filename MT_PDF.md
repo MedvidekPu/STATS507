@@ -86,7 +86,7 @@ def euler_approx(epsilon):
     error = euler_infinite_sum(n) - math.exp(1)
     while error < epsilon:
         return euler
-      
+```      
       
 ```        
 def print_euler_sum_table(n):
