@@ -68,6 +68,7 @@ def euler_limit(n):
     return e
 ```
 
+```
 def euler_infinite_sum(n):
     if n == 0:
         return 0
@@ -86,13 +87,14 @@ def euler_approx(epsilon):
     while error < epsilon:
         return euler
         
-        
+```        
 def print_euler_sum_table(n):
    for i in range(1,n+1):
        print(euler_infinite_sum(i)) 
 ```
 
 ### Palindrome
+
 ```
 def is_palindrome(s):
     s = s.lower()
@@ -111,6 +113,7 @@ def is_palindrome(s):
 ```
 
 ### Valid sparse vector
+
 ```
 def is_valid_sparse_vector(s):
     for i in s.keys():
