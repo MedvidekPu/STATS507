@@ -33,6 +33,9 @@ def reducer(accum, x):
     accum.setdefault((a, b), 0)
     accum[a, b] += 1
     return accum
+
+>>> functools.reduce(reducer, map(mapper, likes.split("\n")), {})
+{('A', 'B'): 2, ('C', 'D'): 1, ('B', 'A'): 1, ('A', 'C'): 1, ('C', 'A'): 1}
 ```
 
 ### Trimmed mean
