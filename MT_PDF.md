@@ -179,6 +179,13 @@ sum_of_even_squares = functools.reduce(lambda x,y: x+y, filter(lambda x: x%2 == 
 ```
  product_of_primes = functools.reduce(lambda x,y: x*y, [next(p) for i in range(13)])
  # p = primes() generator object
+ 
+ def primes():
+    n = 2
+    while True:
+        if any(n%x==0 for x in range(2,n)) == False:
+            yield n
+        n+=1
 ```
 
 ### 20 harmonic numbers
@@ -249,3 +256,68 @@ def get_spectrum(m):
     eigenvalue, eigenvector = np.linalg.eigh(m)
     return eigenvalue
 ```
+
+
+### File opening and counting
+``` 
+def count_bigrams_in_file(file):
+    try:
+        with open(file, 'r') as f:
+            # read file, replace newlines, change to lower case
+            s = f.read().replace('\n','').lower()
+            # remove punctuations
+            punc = set(string.punctuation)
+            s = ''.join(char for char in s if char not in punc)
+            # split to list
+            s = s.split()
+            
+            dic = {}
+            key = []
+            for i in range(len(s)-1):
+                key.append((s[i], s[i+1]))
+            for i in key:
+                if i in dic.keys():
+                    dic[i] += 1
+                else:
+                    dic[i] = 1
+            return dic
+    except IOError:
+        print('file cannot be opened')
+    except TypeError:
+        print('content not string')
+```   
+  
+```   
+s = "Half a league, half a league, Half a league onward, All in the valley of Death Rode the six hundred." 
+s = s.lower()
+punc = set(string.punctuation)
+s = ''.join(char for char in s if char not in punc)
+s = s.split()
+dic = {}
+key = []
+for i in range(len(s)-1):
+    key.append((s[i], s[i+1]))
+for i in key:
+    if i in dic.keys():
+        dic[i] += 1
+    else:
+        dic[i] = 1
+        
+#{('half', 'a'): 3,
+#('a', 'league'): 3,
+#('league', 'half'): 2,
+#('league', 'onward'): 1,
+#('onward', 'all'): 1,
+#('all', 'in'): 1,
+#('in', 'the'): 1,
+#('the', 'valley'): 1,
+#('valley', 'of'): 1,
+#('of', 'death'): 1,
+#('death', 'rode'): 1,
+#('rode', 'the'): 1,
+#('the', 'six'): 1,
+#('six', 'hundred'): 1}
+
+``` 
+
+
