@@ -1,6 +1,6 @@
 # STATS507
 
-## Practice Test
+## Midterm PDF
 
 ###  Fibonacci sequence
 ```
