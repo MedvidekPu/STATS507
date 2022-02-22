@@ -1,6 +1,6 @@
 # STATS507
 
-## Midterm PDF
+## Prev Assignments
 
 ###  Fibonacci sequence
 ```
@@ -320,4 +320,20 @@ for i in key:
 
 ``` 
 
+## Notes
 
+### Reduce function
+
+``` 
+>>> def do_and_print(t1, t2):
+    print 't1 is', t1
+    print 't2 is', t2
+    return t1+t2
+
+>>> reduce(do_and_print, ((1,2), (3,4), (5,)))
+t1 is (1, 2)
+t2 is (3, 4)
+t1 is (1, 2, 3, 4)
+t2 is (5,)
+(1, 2, 3, 4, 5)
+``` 
