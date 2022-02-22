@@ -54,6 +54,30 @@ def bigrams(s):
     return collections.Counter([p for p in pairs if set(p) <= alpha])
 ```
 
+### MyBigrams
+
+```
+def bigrams(sen):
+    sen = sen.lower().replace(' a ','').replace(' ','').strip()
+    
+    bi = []
+    
+    le = len(sen)
+    i = 0
+    
+    for x in range(le):
+        bi.append(sen[i:x+2])
+        i+=1
+        
+    for x in bi:
+        if len(x)<2:
+            bi.remove(x)
+        if len(x)>1 and x[0]==x[1]:
+            bi.remove(x)
+        
+    return Counter(bi)
+```
+
 ### Euclid's algorithm
 ```
 def gcd(a,b):
