@@ -51,4 +51,126 @@ def bigrams(s):
     return collections.Counter([p for p in pairs if set(p) <= alpha])
 ```
 
+### Euclid's algorithm
+```
+def gcd(a,b):
+    while b != 0:
+       t = b 
+       b = a % b 
+       a = t 
+    return a
+```
 
+### Euler's number appx
+```
+def euler_limit(n):
+    e = (1 + 1/n)**n
+    return e
+```
+
+def euler_infinite_sum(n):
+    if n == 0:
+        return 0
+    else:
+        factorial = 1
+        euler = 1
+        for i in range(1,n):
+            factorial = factorial * i
+            euler = euler + 1/factorial
+        return euler
+```
+        
+```
+def euler_approx(epsilon):
+    error = euler_infinite_sum(n) - math.exp(1)
+    while error < epsilon:
+        return euler
+        
+        
+def print_euler_sum_table(n):
+   for i in range(1,n+1):
+       print(euler_infinite_sum(i)) 
+```
+
+### Palindrome
+```
+def is_palindrome(s):
+    s = s.lower()
+    i = 0
+    j = len(s)-1
+    while i < len(s) and j < len(s):
+        if s[i] == " ":
+            i += 1
+        if s[j] == " ":
+            j -= 1
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True    
+```
+
+### Valid sparse vector
+```
+def is_valid_sparse_vector(s):
+    for i in s.keys():
+        if not (type(i) == int and i > 0 and type(s[i]) == float):
+            return False
+    return True
+```
+
+### Rotate tuple
+
+```
+def rotate_tuple(t, s):
+    if type(t) != tuple:
+        raise TypeError('input not a tuple')
+    if type(s) != int:
+        print('input is a non-integer')
+        s = int(s)
+    first = t[-s:]
+    second = t[:-s]
+    return first + second
+```
+
+### Fibbonaci in class
+
+```
+class Fibo:
+    def __init__(self):
+        self.a = -1
+        self.b = 1
+        
+    def __iter__(self):
+        return self
+        
+    def __next__(self):
+        fibo = self.a + self.b
+        self.a, self.b = self.b, (self.a + self.b)
+        return fibo
+```
+
+```
+### Ulam numbers
+
+def ulam():
+    t = [1,2]
+    u = 3
+    while True:
+        c = 0
+        for j in range(0, len(t)): 
+            if (u - t[j]) in t and u != (2*t[j]):  
+                c += 1
+        if c == 2:   
+            t.append(u)
+            yield u
+        u += 1
+```
+ 
+ 
+ ### Sum of first 10 even square numbers
+ ```
+ sum_of_even_squares = functools.reduce(lambda x,y: x+y, filter(lambda x: x%2 == 0, [x*x for x in range(1,21)]))
+ ```
+ 
+ 
