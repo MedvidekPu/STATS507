@@ -23,6 +23,19 @@ def col_avg(csv):
     return list(map(mean, cols))
 ```
 
+### MyColumn average
+```
+s=s.split('\n')
+
+p = []
+
+for line in s:
+    line = line.split(',')
+    for i in range(len(line)):
+        line[i] = int(line[i])
+    p.append(sum(line)/len(line))
+```
+
 ### Networking
 ```
 def mapper(line):
